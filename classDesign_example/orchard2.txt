@@ -1,0 +1,17 @@
+Brookdale Fruit Farm
+8 6
+7
+Cortland
+10 12
+Empire
+10 18
+Gala
+9 8
+Granny Smith
+9 3
+Honeycrisp
+9 15
+Macoun
+9 20
+Pink Lady
+11 4

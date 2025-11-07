@@ -1,0 +1,21 @@
+10
+Cortland
+10 20
+Empire
+10 10
+Fuji
+9 15
+Gala
+9 30
+Golden Delicious
+10 10
+Honeycrisp
+9 10
+McIntosh
+9 25
+Pristine
+8 5
+Red Delicious
+10 30
+Zestar
+8 5
