@@ -33,15 +33,15 @@ int main() {
 
 		case 'P': case 'p':			// Compute 2^n
 			result = 1;
-			for (i = 0; i < n; ++i)
+			for (i = 0; i < n; ++i) 
 				result *= 2;	// result = result * 2;
-
+			
 			cout << "2^n = " << result << endl;
 
 			break;
 
 		default:
-			if (cmd != 'X' && cmd != 'x')
+			if (cmd != 'X' && cmd != 'x') 
 				cout << "Invalid command " << cmd << endl;
 		}
 	} while (cmd != 'X' && cmd != 'x');

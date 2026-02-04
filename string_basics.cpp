@@ -25,7 +25,7 @@ int main() {
 	char c1;
 	
 	cout << "Testing getline(): enter string with spaces: ";
-	cin.ignore(1);
+	cin.ignore(1);		// arg: # of chars to skip
 	getline(cin, s1);
 	cout << "Finally, s1 = " << s1 << endl;
 
