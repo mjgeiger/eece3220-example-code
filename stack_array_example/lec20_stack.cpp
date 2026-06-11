@@ -27,4 +27,6 @@ int main() {
 		S1.pop();
 	}
 	return 0;
+
+	// S1.~Stack() automatically called
 }

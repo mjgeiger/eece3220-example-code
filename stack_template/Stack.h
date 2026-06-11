@@ -49,7 +49,7 @@ Stack<T>::Stack() : top(nullptr)
 // Deletes nodes from stack until it's empty
 template <class T>
 Stack<T>::~Stack() {
-	while (!empty())
+	while ( !empty() )
 		pop();
 }
 
@@ -61,7 +61,7 @@ bool Stack<T>::empty() const {
 
 // Pushes data on top of stack
 template <class T>
-void Stack<T>::push(const T& val) {
+void Stack<T>::push(const T &val) {
 	Node<T>* newNode;
 
 	// GENERAL STEPS FOR ADDING TO LINKED LIST
@@ -69,7 +69,7 @@ void Stack<T>::push(const T& val) {
 	// 2. New node -> successor
 	//   (since new node will become top of stack, current top node
 	//    is its successor)
-	newNode = new Node(val, top);
+	newNode = new Node<T>(val, top);
 
 	// 3. Predecessor -> new node 
 	//   (in stack, no predecessor because new node goes at top)
@@ -79,7 +79,7 @@ void Stack<T>::push(const T& val) {
 // Removes top item from stack
 template <class T>
 void Stack<T>::pop() {
-
+	
 	// 1. Copy address of node to remove
 	Node<T>* ptr = top;
 
@@ -95,37 +95,37 @@ void Stack<T>::pop() {
 // Return value at top of stack
 template <class T>
 T Stack<T>::getTop() const {
-	return top->getVal();	// Same as (*top).getVal();
+	return top->getVal();
 }
 
 // Overloaded assignment--performs deep copy
 template <class T>
-Stack<T>& Stack<T>::operator =(const Stack<T>& rhs) {
-	Stack<T> temp;
+Stack<T> &Stack<T>::operator =(const Stack<T> &rhs) {
+	Node<T>* p;
 
 	// Ensure no self-assignment
 	if (!(*this == rhs)) {
 
 		// Deallocate any nodes in calling object at start
-		// Could call ~Stack(), but that fn. isn't usually called
-		while (!empty())
+		while (top != nullptr)
 			pop();
 
 		// Now, copy the data
-		// First, copy from rhs to the temp stack
-		Node<T>* ptr = rhs.top;
-		while (ptr != nullptr) {
-			temp.push(ptr->getVal());
-			ptr = ptr->getNext();
+		// First, copy rhs to temp stack
+		Stack<T> temp;
+		p = rhs.top();
+		while (p != nullptr) {
+			temp.push(p->getVal());
+			p = p->getNext();
 		}
 
-		// Now, traverse the temp stack and copy to the calling obj
-		ptr = temp.top;
-		while (ptr != nullptr) {
-			push(ptr->getVal());
-			ptr = ptr->getNext();
+		// Now, copy from temp to calling object
+		p = temp.top();
+		while (p != nullptr) {
+			push(p->getVal());
+			p = p->getNext();
 		}
-	}
+	} 	
 
 	// Return reference to calling object
 	return *this;
@@ -133,39 +133,42 @@ Stack<T>& Stack<T>::operator =(const Stack<T>& rhs) {
 
 // Overloaded comparison
 template <class T>
-bool Stack<T>::operator ==(const Stack<T>& rhs) {
+bool Stack<T>::operator ==(const Stack<T> &rhs) {
+	Node<T>* p1 = top;		// p1 = traversal pointer for calling object
+	Node<T>* p2 = rhs.top;	// p2 = traversal pointer for rhs
 
-	// First, traverse both stacks
-	Node<T>* ptr = top;
-	Node<T>* ptr2 = rhs.top;
+	// Exit condition: p1 == nullptr || p2 == nullptr
+	//  (end loop when we reach end of at least one list)
+	// So, both pointers must be non-null to continue
+	while (p1 != nullptr && p2 != nullptr) {
 
-	while (ptr != nullptr && ptr2 != nullptr) {
-
-		// Compare corresponding nodes
-		// If you find a mismatch, stacks aren't equal
-		if (ptr->getVal() != ptr2->getVal())
+		// Compare both nodes; return false if mismatch
+		if (p1->getVal() != p2->getVal())
 			return false;
 
-		ptr = ptr->getNext();
-		ptr2 = ptr2->getNext();
+		// Move both traversal pointers
+		p1 = p1->getNext();
+		p2 = p2->getNext();
 	}
 
-	// If you reach end of loop, reached end of at least
-	//   one stack
-
-	if (ptr == nullptr && ptr2 == nullptr)	// Stacks match
-		return true;
-	else				// if (ptr != nullptr || ptr2 != nullptr)
+	// Other mismatch condition: different lengths
+	if (p2 != nullptr || p1 != nullptr)
 		return false;
+	
+	// Otherwise, they're same length and they match
+	// Could have written this as if condition
+	// if (p1 == nullptr && p2 == nullptr)
+	else
+		return true;
 }
 
 // Overloaded output (friend function)
 // Example of stack traversal
 template <class T>
-ostream& operator <<(ostream& out, Stack<T>& aStack) {
+ostream &operator <<(ostream &out, Stack<T> &aStack) {
 
 	// 1. ptr = first node
-	Node<T>* ptr = aStack.top;
+	Node<T>* ptr = aStack.top;		// MUST BE aStack.top--THIS ISN'T A MEMBER FUNCTION!
 
 	// 2. As long as we haven't hit the last node ...
 	//    (or gone past it)

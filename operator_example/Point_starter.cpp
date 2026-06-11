@@ -24,17 +24,18 @@ void Point::setY(double newY) {
 }
 
 // "Get" functions
-double Point::getX() {
+double Point::getX() const {
 	return xCoord;
 }
 
-double Point::getY() {
+double Point::getY() const {
 	return yCoord;
 }
 
 
 // OVERLOADED OPERATORS
 // p2 = p1;  --> p2.operator =(p1);
+/* 2/17/26: NO LONGER USED; SEE Point.h FOR EXPLANATION
 Point& Point::operator =(const Point& rhs) {
 	
 	// Ensure no self-assignment
@@ -46,7 +47,7 @@ Point& Point::operator =(const Point& rhs) {
 
 	// Return reference to calling object
 	return *this;
-}
+}*/
 
 // Example usage: if (p1 == p2) { }
 bool Point::operator ==(const Point& rhs) {
@@ -57,5 +58,25 @@ bool Point::operator ==(const Point& rhs) {
 //   cout << p1 << " " << p2;
 // Example output: (2, 3) or (1.2, 3.456)
 ostream& operator <<(ostream& out, const Point& p) {
+
+}
+
+// EXTRA OVERLOADED OPERATORS
+// Addition: p1 + p2 = 
+//			(p1.xCoord + p2.xCoord, p1.yCoord + p2.yCoord)
+Point Point::operator+(const Point& rhs) {
+
+}
+
+
+// Less than: p1 < p2 if p1.xCoord < p2.xCoord and 
+//						 p1.yCoord < p2.yCoord
+bool Point::operator<(const Point& rhs) {
+
+}
+
+// Input: assume point entered in form (x, y)
+//        and account for *all* input chars
+istream& operator>>(istream& in, Point& p) {
 
 }

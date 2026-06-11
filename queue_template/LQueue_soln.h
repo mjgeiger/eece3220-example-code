@@ -44,7 +44,7 @@ Queue<T>::~Queue() {
 // Returns true if queue empty
 template <class T>
 bool Queue<T>::empty() const {
-	return (front == nullptr);
+	return (back == nullptr);	// Could also use (front == nullptr)
 }
 
 // Add val to back of queue
@@ -53,7 +53,7 @@ void Queue<T>::enqueue(const T& val) {
 	// 1. Allocate new node
 	// 2. New node --> successor
 	// New node is last one in queue --> no successor
-	Node<T>* newNode = new Node(val, nullptr);
+	Node<T>* newNode = new Node<T>(val, nullptr);
 
 	// 3. Predecessor --> new node
 	// 3a. Special case: empty queue has no nodes
@@ -78,17 +78,17 @@ void Queue<T>::dequeue() {
 	else {
 
 		// 1. Copy address of node to delete
-		Node<T>* temp = front;
-		
+		Node<T>* p = front;
+
 		// 2. Unlink node (front points past node)
 		front = front->getNext();
-		
+
 		// Special case: removing only node in queue
 		if (front == nullptr)
 			back = nullptr;
 
 		// 3. Delete node
-		delete temp;
+		delete p;
 	}
 }
 

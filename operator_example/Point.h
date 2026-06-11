@@ -25,9 +25,12 @@ public:
 	double getY() const;					// Returns Y coordinate
 
 	// OVERLOADED OPERATORS
+	/* 2/17/26: Stopped using pointless operator= function; will
+		cover fundamentals of assignment when actually necessary
+		(Stack class)
 	Point& operator =(const Point &rhs);	// Assignment
 											// e.g., p1 = p2; --> p1.operator=(p2);
-	
+	*/
 	bool operator ==(const Point &rhs);		// Equality
 
 	friend ostream& operator <<(ostream& out, const Point& p);	// Output operator

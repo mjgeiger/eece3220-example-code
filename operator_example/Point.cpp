@@ -34,26 +34,11 @@ double Point::getY() const {
 
 
 // OVERLOADED OPERATORS
-// p2 = p1;  --> p2.operator =(p1);
-Point& Point::operator =(const Point& rhs) {
-
-	// Ensure no self-assignment
-	//  this == address of calling object,
-	//   so *this == calling object
-	if (!(*this == rhs)) {
-		xCoord = rhs.xCoord;
-		yCoord = rhs.yCoord;
-	}
-
-	// Return reference to calling object
-	return *this;
-}
-
 // Example usage: if (p1 == p2) { }
 bool Point::operator ==(const Point& rhs) {
 	return (xCoord == rhs.xCoord && yCoord == rhs.yCoord);
-	
-	/*
+
+	/*	ABOVE CODE ESSENTIALLY DOES THE FOLLOWING:
 	if (xCoord == rhs.xCoord && yCoord == rhs.yCoord)
 		return true;
 	else
@@ -73,12 +58,10 @@ ostream& operator <<(ostream& out, const Point& p) {
 // Addition: p1 + p2 = 
 //			(p1.xCoord + p2.xCoord, p1.yCoord + p2.yCoord)
 Point Point::operator+(const Point& rhs) {
-	Point sum;
-
-	sum.xCoord = xCoord + rhs.xCoord;
-	sum.yCoord = yCoord + rhs.yCoord;
-
-	return sum;
+	Point temp;
+	temp.xCoord = xCoord + rhs.xCoord;
+	temp.yCoord = yCoord + rhs.yCoord;
+	return temp;
 }
 
 
@@ -96,6 +79,5 @@ istream& operator>>(istream& in, Point& p) {
 	in.ignore(1);		// Skips ,
 	in >> p.yCoord;
 	in.ignore(1);		// Skips )
-
 	return in;
 }

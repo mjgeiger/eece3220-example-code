@@ -24,11 +24,11 @@ void Point::setY(double newY) {
 }
 
 // "Get" functions
-double Point::getX() {
+double Point::getX() const {
 	return xCoord;
 }
 
-double Point::getY() {
+double Point::getY() const {
 	return yCoord;
 }
 

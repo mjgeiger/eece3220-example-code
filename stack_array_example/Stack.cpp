@@ -19,7 +19,7 @@ unsigned cap;	// Capacity (max size) of stack
 Stack::Stack(unsigned maxSize) :
 	tos(-1), cap(maxSize)
 {
-	list = new double[maxSize];		
+	list = new double[maxSize];
 }
 
 Stack::~Stack() {
@@ -33,23 +33,24 @@ bool Stack::empty() const {
 void Stack::push(const double& val) {
 	// Can't push when stack full
 	if (tos == cap - 1)
-		cout << "ERROR: stack full\n";
+		cout << "Stack full; cannot push\n";
 
 	// Otherwise:
 	// 1. Increment tos
 	// 2. Set list[tos] = val
-	else {
+	else
 		list[++tos] = val;
-	}
 }
 
 void Stack::pop() {
 	// Can't pop when empty
+	// "this" == address of calling object
 	if (tos == -1)
-		cout << "ERROR: stack empty\n";
+		cout << "Can't pop; stack empty\n";
 
 	else
 		tos--;
+
 }
 
 // Returns object at TOS

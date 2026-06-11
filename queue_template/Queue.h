@@ -17,7 +17,7 @@ public:
 private:
 	T* list;			// Actual array storage for queue
 	int front, back;	// Front and back indexes
-	unsigned cap;		// Maximum array size
+	unsigned cap;		// Maximum array size (capacity)
 	unsigned nvals;		// Number of values currently in queue
 };
 
@@ -46,9 +46,10 @@ template <class T>
 void Queue<T>::enqueue(const T &val) {
 	
 	// Can't add when queue is full
-	if (cap == nvals) {
-		cout << "ERROR: Queue full\n";
+	if (nvals == cap) {
+		cout << "Queue full!\n";
 	}
+
 	else {
 		list[back] = val;
 		back = (back + 1) % cap;
@@ -61,9 +62,9 @@ template <class T>
 void Queue<T>::dequeue() {
 
 	// Can't remove when queue is empty
-	if (nvals == 0) {
-		cout << "ERROR: Queue empty\n";
-	}
+	if (nvals == 0)
+		cout << "Queue empty!\n";
+	
 	else {
 		front = (front + 1) % cap;
 		nvals--;
@@ -71,6 +72,7 @@ void Queue<T>::dequeue() {
 }
 
 // Retrieve value of element at front of Queue
+// DON'T CALL THIS IF QUEUE EMPTY
 template <class T>
 T Queue<T>::getFront() {
 	return list[front];

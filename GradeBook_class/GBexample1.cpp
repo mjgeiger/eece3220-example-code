@@ -17,8 +17,7 @@ int main()
 	string nameOfCourse;	// string of characters to store the course name
 	GradeBook myGradeBook;	// create a GradeBook object named myGradeBook
 	GradeBook gb2("EECE.2160");
-	int x;
-
+	
 	// display initial value of courseName
 	cout << "Initial course name is: " << myGradeBook.getCourseName()
 		<< endl;
