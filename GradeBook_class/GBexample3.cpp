@@ -13,12 +13,12 @@
 using namespace std;
 
 int main() {
-	GradeBook g1("3220");			// Takes string argument
-	GradeBook g2;					// Good as-is
-	g2.setCourseName("EECE.2160");	// Improper member function 
-	g2.setCourseName("EECE.3220");	// courseName is private
-	string s = g2.getCourseName();	// Good as-is
-	g2.displayMessage();			// Missing () for function call
+	GradeBook g1("3220");			
+	GradeBook g2;				
+	g2.setCourseName("EECE.2100");	 
+	g2.setCourseName("EECE.3220");	
+	string s = g2.getCourseName();	
+	g2.displayMessage();
 
 	return 0;
 }

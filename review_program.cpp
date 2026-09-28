@@ -1,5 +1,5 @@
 /*
-* EECE.3220: Data Structures
+* EECE.2220: Data Structures
 * Instructor: M. Geiger
 * Program to review conditionals/loops and introduce C++ basics
 */

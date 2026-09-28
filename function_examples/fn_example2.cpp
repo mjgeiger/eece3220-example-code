@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 // Prototypes--typically in .h
