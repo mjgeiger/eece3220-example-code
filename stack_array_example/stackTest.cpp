@@ -11,7 +11,7 @@ int main() {
 	Stack S1;			// Creates stack of max size 1024
 	Stack S2(200);		// Creates stack of max size 200
 	int n;
-	/*
+	
 	cout << "Enter array size: ";
 	cin >> n;
 
@@ -25,7 +25,7 @@ int main() {
 		cout << arr[i] << '\n';
 
 	delete [] arr;
-	*/
+	
 
 	return 0;
 	// ~Stack() called on S1 and S2

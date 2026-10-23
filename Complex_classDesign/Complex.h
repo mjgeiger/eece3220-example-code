@@ -6,34 +6,22 @@ using namespace std;
 class Complex {
 public:
 	// Add member functions
-	// Constructors
-	Complex();
-	Complex(double r, double i);
-
+	Complex();						// Default constructor
+	Complex(double r, double i);	// Param. constructor
+	
 	// Set/get functions
-	void setCplx(double r, double i);
 	void setReal(double r);
 	void setImag(double i);
-	double getReal() const;
-	double getImag() const;	
+	double getReal();
+	double getImag();
 
-	// Magnitude
-	double getMagnitude();
-
-	// Math functions: +, -, *, /
-	Complex add(const Complex &rhs);
-	Complex sub(const Complex &rhs);
-	Complex mul(const Complex &rhs);
-	Complex div(const Complex &rhs);
-
-	// Conjugate
-	Complex getConjugate();
+	// Math functions
+	Complex add(const Complex& rhs);
+	// Could add more
 
 	// Display
-	void print(ostream& out);	// c1.print(cout);
-
+	void display(ostream& out);
 private:
 	// Add data members
-	/* Real & imaginary parts */
-	double real, imag;
+	double real, imag;		// Real/imaginary part of #
 };

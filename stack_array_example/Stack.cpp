@@ -16,8 +16,7 @@ double* list;	// The actual data stored on the stack
 int tos;		// Index for top of stack
 unsigned cap;	// Capacity (max size) of stack
 */
-Stack::Stack(unsigned maxSize) :
-	tos(-1), cap(maxSize)
+Stack::Stack(unsigned maxSize) : tos(-1), cap(maxSize) 
 {
 	list = new double[maxSize];
 }
@@ -33,7 +32,7 @@ bool Stack::empty() const {
 void Stack::push(const double& val) {
 	// Can't push when stack full
 	if (tos == cap - 1)
-		cout << "Stack full; cannot push\n";
+		cout << "Stack full; can't push\n";
 
 	// Otherwise:
 	// 1. Increment tos
@@ -44,13 +43,10 @@ void Stack::push(const double& val) {
 
 void Stack::pop() {
 	// Can't pop when empty
-	// "this" == address of calling object
 	if (tos == -1)
-		cout << "Can't pop; stack empty\n";
-
+		cout << "Stack empty; can't pop\n";
 	else
 		tos--;
-
 }
 
 // Returns object at TOS

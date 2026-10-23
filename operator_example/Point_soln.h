@@ -13,6 +13,7 @@
 using std::ostream;	//  ... but it doesn't work without
 					//  indicating what part of <iostream>
 					//  we're using
+using std::istream;	// Necessary for >> operator
 
 class Point {
 public:
@@ -24,12 +25,18 @@ public:
 	double getY();					// Returns Y coordinate
 
 	// OVERLOADED OPERATORS
-	Point& operator =(const Point &rhs);	// Assignment
+	//Point& operator =(const Point &rhs);	// Assignment
 											// e.g., p1 = p2; --> p1.operator=(p2);
 	
 	bool operator ==(const Point &rhs);		// Equality
 	
 	friend ostream& operator <<(ostream& out, const Point& p);	// Output operator
+
+	// NEW OPERATORS TO BE WRITTEN IN CLASS
+	Point operator+(const Point& rhs);					// Addition
+	bool operator<(const Point& rhs);					// Less than
+	friend istream& operator>>(istream& in, Point& p);	// Input
+
 private:
 	double xCoord;		// X coordinate
 	double yCoord;		// Y coordinate

@@ -2,46 +2,41 @@
 #include <cmath>
 
 // Define member functions here
-// Constructor
 Complex::Complex() : real(0), imag(0)
+{}						
+	
+Complex::Complex(double r, double i) :
+    real(r), imag(i)
 {}
-
-// Data member: _Complex_real
-// Argument: _Complex_Complex_real
-Complex::Complex(double r, double i)  
-    : real(r), imag(i)
-{}
-
+	
 // Set/get functions
-void Complex::setCplx(double r, double i) {
+void Complex::setReal(double r) {
     real = r;
+}
+
+void Complex::setImag(double i) {
     imag = i;
 }
 
-double Complex::getReal() const {
+double Complex::getReal() {
     return real;
 }
 
-double Complex::getImag() const {
+double Complex::getImag() {
     return imag;
 }
 
-// Math functions
-Complex Complex::add(const Complex &rhs) {
-    Complex num(real + rhs.real, imag + rhs.imag);
+// Math functions: a = b.add(c)
+Complex Complex::add(const Complex& rhs) {
+    Complex result;
 
-    /* If, for some reason, you don't want to do math 
-        in your num constructor, these statements also work:
-    num.real = real + rhs.real;
-    num.imag = imag + rhs.imag;
-    */
+    result.real = real + rhs.real;
+    result.imag = imag + rhs.imag;
 
-    return num;
+    return result;
 }
 
-
-
-// Display
-void Complex::print(ostream& out) {	// c1.print(cout);
-    out << real << " + " << imag << "i" << endl;
+// Display: print object in form: a + bi
+void Complex::display(ostream& out) {
+    out << real << " + " << imag << "i";
 }

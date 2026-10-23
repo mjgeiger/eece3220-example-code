@@ -34,11 +34,25 @@ double Point::getY() const {
 
 
 // OVERLOADED OPERATORS
+/* 2/17/26: NO LONGER USED; SEE Point.h FOR EXPLANATION
+Point& Point::operator =(const Point& rhs) {
+	
+	// Ensure no self-assignment
+	//  this == address of calling object,
+	//   so *this == calling object
+	if (!(*this == rhs)) {
+
+	}
+
+	// Return reference to calling object
+	return *this;
+}*/
+
 // Example usage: if (p1 == p2) { }
 bool Point::operator ==(const Point& rhs) {
 	return (xCoord == rhs.xCoord && yCoord == rhs.yCoord);
-
-	/*	ABOVE CODE ESSENTIALLY DOES THE FOLLOWING:
+	
+	/*
 	if (xCoord == rhs.xCoord && yCoord == rhs.yCoord)
 		return true;
 	else
@@ -50,7 +64,7 @@ bool Point::operator ==(const Point& rhs) {
 //   cout << p1 << " " << p2;
 // Example output: (2, 3) or (1.2, 3.456)
 ostream& operator <<(ostream& out, const Point& p) {
-	out << '(' << p.xCoord << ", " << p.yCoord << ')';
+	out << "(" << p.xCoord << ", " << p.yCoord << ")";
 	return out;
 }
 
@@ -58,10 +72,12 @@ ostream& operator <<(ostream& out, const Point& p) {
 // Addition: p1 + p2 = 
 //			(p1.xCoord + p2.xCoord, p1.yCoord + p2.yCoord)
 Point Point::operator+(const Point& rhs) {
-	Point temp;
-	temp.xCoord = xCoord + rhs.xCoord;
-	temp.yCoord = yCoord + rhs.yCoord;
-	return temp;
+	Point result;		// Temp object to hold sum
+
+	result.xCoord = xCoord + rhs.xCoord;
+	result.yCoord = yCoord + rhs.yCoord;
+
+	return result;
 }
 
 
@@ -74,10 +90,11 @@ bool Point::operator<(const Point& rhs) {
 // Input: assume point entered in form (x, y)
 //        and account for *all* input chars
 istream& operator>>(istream& in, Point& p) {
-	in.ignore(1);		// Skips (
+	in.ignore(1);		// Skip '('
 	in >> p.xCoord;
-	in.ignore(1);		// Skips ,
+	in.ignore(1);		// Skip ','
 	in >> p.yCoord;
-	in.ignore(1);		// Skips )
+	in.ignore(1);		// Skip ')'
+
 	return in;
 }
